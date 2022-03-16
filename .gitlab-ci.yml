@@ -25,6 +25,7 @@ default:
     - docker logout
 
 php53:
+    stage: build
     script:
       - "docker build -t $FULL_IMAGE_53 5.3-apache"
       - "docker tag $FULL_IMAGE_53 $CI_REGISTRY_IMAGE:$TAG_53"
@@ -34,6 +35,7 @@ php53:
       - "docker push $DH_IMAGE:$TAG_53"
 
 php56:
+  stage: build
   script:
     - "docker build -t $FULL_IMAGE_56 5.6-apache"
     - "docker tag $FULL_IMAGE_56 $CI_REGISTRY_IMAGE:$TAG_56"
