@@ -1,0 +1,47 @@
+# will never run on a git push or merge request event.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - when: always
+    
+variables:
+    FULL_IMAGE_53: $CI_REGISTRY_IMAGE:53-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID
+    FULL_IMAGE_56: $CI_REGISTRY_IMAGE:56-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID
+    TAG_53: "5.3-apache"
+    TAG_56: "5.6-apache"
+    DH_IMAGE: php-deprecated
+
+default:
+  tags:
+    - shell
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - echo "$DH_PW" | docker login -u $DH_USER --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+    - docker logout
+
+php53:
+    script:
+      - "docker build -t $FULL_IMAGE_53 5.3-apache"
+      - "docker tag $FULL_IMAGE_53 $CI_REGISTRY_IMAGE:$TAG_53"
+      - "docker tag $FULL_IMAGE_53 $DH_IMAGE:$TAG_53"
+      - "docker push $FULL_IMAGE_53"
+      - "docker push $CI_REGISTRY_IMAGE:$TAG_53"
+      - "docker push $DH_IMAGE:$TAG_53"
+
+php56:
+  script:
+    - "docker build -t $FULL_IMAGE_56 5.6-apache"
+    - "docker tag $FULL_IMAGE_56 $CI_REGISTRY_IMAGE:$TAG_56"
+    - "docker tag $FULL_IMAGE_56 $CI_REGISTRY_IMAGE:latest"
+    - "docker tag $FULL_IMAGE_56 $DH_IMAGE:$TAG_56"
+    - "docker tag $FULL_IMAGE_56 $DH_IMAGE:latest"
+    - "docker push $FULL_IMAGE_56"
+    - "docker push $CI_REGISTRY_IMAGE:latest"
+    - "docker push $CI_REGISTRY_IMAGE:$TAG_56"
+    - "docker push $DH_IMAGE:$TAG_56"
+    - "docker push $DH_IMAGE:latest"
