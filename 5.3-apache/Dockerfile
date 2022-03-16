@@ -1,9 +1,9 @@
 FROM ubuntu:12.04
 
-LABEL maintainer="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-php-legacy/tree/main/5.3-apache"
-LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-php-legacy/tree/main/5.3-apache"
+LABEL maintainer="https://computestacks.com"
+LABEL org.opencontainers.image.authors="https://computestacks.com"
+LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.3-apache"
+LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.3-apache"
 LABEL org.opencontainers.image.title="PHP v5.3 with Apache"
 
 COPY sources.list /etc/apt/sources.list
