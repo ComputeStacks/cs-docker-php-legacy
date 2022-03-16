@@ -4,8 +4,8 @@ Still in use by older applications, but not actively maintained.
 
 ## Versions
 
-* [5.3](https://git.cmptstks.com/cs-public/images/php/-/tree/main/5.3-apache)
-* [5.6](https://git.cmptstks.com/cs-public/images/php/-/tree/main/5.6-apache)
+* [5.3](https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.3-apache)
+* [5.6](https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.6-apache)
 
 ## Submitting Issues
 
