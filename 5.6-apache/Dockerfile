@@ -2,8 +2,8 @@ FROM php:5.6-apache-stretch
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"
-LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.6-apache"
-LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/php-legacy/-/tree/main/5.6-apache"
+LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-php-legacy/tree/main/5.6-apache"
+LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-php-legacy/tree/main/5.6-apache"
 LABEL org.opencontainers.image.title="PHP v5.6 with Apache"
 
 RUN set -ex; \
